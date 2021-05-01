@@ -1,0 +1,169 @@
+h1
+  margin-top: 100px
+  text-align: center
+  font-size: 36px
+.indexCotainer
+  max-width: 1300px
+  margin: auto
+  padding: 10px 30px
+  box-sizing: border-box
+  color: black
+  h2
+    font-size: 25px
+    font-weight: 800
+.coinTopBar
+  display: flex
+  justify-content: space-between
+  margin-top: 15px
+  overflow: hidden
+.coinKeystat
+  flex-basis: 30%
+  background: white
+  border-radius: 10px
+  padding: 15px 20px
+  width: 45%
+  margin-right: 2%
+  max-width: 330px
+  min-width: 330px
+  font-size: 14px
+.coinCharts
+  user-select: none
+  color: black
+  width: 70%
+  background: white
+  padding: 15px 20px
+  border-radius: 10px
+  position: relative
+  padding-right: 35px
+.chartsHeader
+  user-select: none
+  padding-left: 45px
+  .chartsTitle
+    color: inherit
+    padding-bottom: 30px
+  .chartsControl
+    position: relative
+    white-space: nowrap
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    font-family: "karla", sans-serif
+    font-size: 14px
+    user-select: none
+    ul
+      position: relative
+      display: block
+      font-weight: 400
+      padding: 0
+      list-style: none
+      margin-block-start: 1em
+      margin-block-end: 1em
+      margin-inline-start: 0px
+      margin-inline-end: 0px
+      padding-inline-start: 40px
+      li
+        position: relative
+        display: inline-block
+        color: black
+        .option
+          font-size: 13px
+          color: #000
+          cursor: pointer
+          margin: 0 3px
+          &.option_acted
+            color: #F87111
+.chartsBody
+  overflow: hidden
+  margin: 0 -10px
+  position: relative
+  height: 350px
+  overflow: hidden
+
+.coinMiddleBar
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  font-size: 15px
+  font-family: "Karla", sans-serif
+  margin-top: 25px
+.coinMiddleLeftBar
+  display: flex
+  flex-basis: 50%
+  flex-direction: column
+  min-width: 100px
+  max-width: 373px
+  .coinMiddleLeftContain
+    height: fit-content
+    background: white
+    width: 370px
+    border-radius: 10px
+    padding: 30px 20px
+    box-sizing: border-box
+    margin-bottom: 20px
+    display: inline-block
+    .coinMiddleLeftList
+      margin-top: 1em
+      li
+        margin-top: 3px
+.coinMiddleRightBar
+  display: flex
+  flex-basis: 70%
+  padding-left: 45px
+  display: inline-block
+  box-sizing: border-box
+  color: black
+  float: left
+  h2
+    margin-bottom: 25px
+    margin-top: 10px
+.coinBottomContain
+  padding-top: 40px
+  clear: both
+  .coinButtomData
+    width: 100%
+    margin: 25px auto
+    color: black
+    border-collapse: collapse
+    font-size: 14px
+    background: white
+.chartBox
+  display: block
+  width: 800px
+  height: 350px
+@media only screen and (max-width: 1200px)
+  .chartBox
+    width: 50vw
+@media only screen and (max-width: 960px)
+  .coinTopBar
+    display: block
+  .coinKeystat
+    margin-right: 0
+    width: 100%
+    max-width: none
+    margin-bottom: 10px
+    box-sizing: border-box
+  .coinCharts
+    width: 95%
+  .chartBox
+    width: 85vw
+  .coinMiddleBar
+    flex-direction: column
+    margin-top: 15px
+  .coinMiddleLeftBar
+    flex-direction: row
+    justify-content: space-between
+    max-width: 100%
+    .coinMiddleLeftContain
+      flex-basis: 49%
+      height: inherit
+  .indexCotainer
+    padding: 10px 15px
+@media only screen and (max-width: 480px)
+  .coinMiddleLeftBar
+    display: block
+    min-width: inherit
+    .coinMiddleLeftContain
+      width: 100%
+      margin-bottom: 11px
+  .itemMobileHidden
+    display: none

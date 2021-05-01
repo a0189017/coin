@@ -1,0 +1,80 @@
+.list-wrap
+	margin-top: 20px
+	.list-item
+		line-height: $lh-title
+		align-items: center
+		+font(xxs)
+		color: $font-dark
+		&:not(:last-child)
+			border-bottom: 5px solid $border-color
+		> div
+			margin: 10px
+	.list-sum
+		font-weight: bold
+		background-color: #fff
+		color: $font-darker
+		.item-price
+			+font(m)
+	.item-func
+		width: 125px
+		text-align: center
+	.item-id
+		width: 90px
+		word-break: break-all
+	.item-name
+		width: 85px
+	.item-price
+		width: 150px
+	.item-title
+		width: 300px
+	.item-date
+		width: 120px
+		text-align: center
+	.item-status
+		width: 85px
+		text-align: center
+		.eva-icon
+			color: var(--status-color)
+			margin-right: 3px
+	.item-web
+		width: 100px
+		.web-item
+			margin: 3px
+			&:before
+				content: '●'
+				color: var(--web-color)
+				margin-right: 3px
+	.item-img
+		width: 50px
+		text-align: center
+		.img-cover
+			width: 100%
+			height: 50px
+	.item--more
+		+font(xs)
+		color: $font-light
+	.item-system
+		width: 100%
+	.item-textarea
+		width: 300px
+		border: none
+		background-color: #f5f8fd
+.flex-row
+	+flex-box(flex,flex-start,null,null,null)	
+	.col
+		flex-basis: 0
+		flex-grow: 1
+		width: 100%
+	.col-auto
+		flex: 0 0 auto
+		width: auto
+	@for $i from 1 through $total-col
+		.col-#{$i}
+			flex-basis: $i/$total-col*100%
+	@for $i from 1 through $total-col
+		.col-#{$i}
+			margin: 0 10px
+	+breakpoint(mobile)
+		@for $i from 1 through $total-col
+			.m-col-#{$i}
+				flex-basis: $i/$total-col*100%

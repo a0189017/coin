@@ -1,0 +1,27 @@
+.pagination
+	margin: 20px 0
+	display: flex
+	justify-content: center
+	flex-wrap: wrap
+	align-items: center
+	.page-item
+		+flex-box(inline-flex,center,center,null,null)
+		width: 30px
+		height: 30px
+		+font(xs)
+		border-radius: 3px
+		margin: 0 5px
+		color: $page-color
+		border: 1px solid #dee2e6
+		&:hover
+			text-decoration: none
+			background-color: #dee2e6
+			opacity: .9
+		&.is_acted
+			color: #fff
+			background-color: $page-color
+			border: 1px solid #dee2e6
+@media screen and (max-width : 360px)
+	.pagination
+		.page-show
+			display: none

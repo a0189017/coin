@@ -1,0 +1,79 @@
+@mixin bg-cover($position:null)
+	background-position: $position
+	background-repeat: no-repeat
+	background-size: cover
+@mixin one-line-only
+	overflow: hidden
+	text-overflow : ellipsis
+	white-space : nowrap
+@mixin font($size)
+	@if $size == xxxl
+		font-size: 36px
+		font-size: 2.25rem
+	@else if $size == xxl
+		font-size: 30px
+		font-size: 1.875rem
+	@else if $size == xl
+		font-size: 24px
+		font-size: 1.5rem
+	@else if $size == ll
+		font-size: 22px
+		font-size: 1.375rem
+	@else if $size == l
+		font-size: 18px
+		font-size: 1.125rem
+	@else if $size == m
+		font-size: 16px
+		font-size: 1rem
+	@else if $size == s
+		font-size: 15px
+		font-size: 0.937rem
+	@else if $size == xs
+		font-size: 14px
+		font-size: 0.875rem
+	@else if $size == xxs
+		font-size: 12px
+		font-size: 0.75rem
+	@else
+		font-size: $size + px
+		font-size: ($size * 0.0625) + rem
+
+@mixin flex-box($display, $align, $justify, $wrap, $direction)
+	display: $display
+	align-items: $align
+	justify-content: $justify
+	flex-wrap: $wrap
+	flex-direction: $direction
+
+@mixin psa($top:null,$right:null,$bottom:null,$left:null,$zindex:null)
+	position: absolute
+	top: $top
+	right: $right
+	bottom: $bottom
+	left: $left
+	z-index: $zindex
+
+@mixin psf($top:null,$right:null,$bottom:null,$left:null,$zindex:null)
+	position: fixed
+	top: $top
+	right: $right
+	bottom: $bottom
+	left: $left
+	z-index: $zindex
+
+@mixin breakpoint($point,$type:max-width)
+	@if $point == notebook
+		@media only screen and (max-width: 1023px)
+			@content
+	@else if $point == pad
+		@media only screen and (max-width: 780px)
+			@content
+	@else if $point == mobile
+		@media only screen and (max-width: 720px)
+			@content
+	@else if $point == mobile-s
+		@media only screen and (max-width: 450px)
+			@content
+	@else
+		@media only screen and ($type: $point)
+			@content

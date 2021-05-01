@@ -1,0 +1,54 @@
+{
+  "name": "coin-tw",
+  "version": "1.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env BASE_PORT=80 BASE_URL=coin.beta.com.tw API_URL=https://api.coin.com.tw nuxt",
+    "build": "cross-env BASE_PORT=80 BASE_URL=news.gamebase.com.tw API_URL=https://api.gamebase.com.tw nuxt build",
+    "start": "cross-env BASE_PORT=80 BASE_URL=news.gamebase.com.tw API_URL=https://api.gamebase.com.tw nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint": "npm run lint:js"
+  },
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@nuxtjs/axios": "^5.12.2",
+    "autoprefixer": "^9.8.6",
+    "chart.js": "^2.9.4",
+    "connect": "^3.7.0",
+    "cookie-universal-nuxt": "^2.1.4",
+    "echarts": "^5.1.0",
+    "nuxt": "^2.14.4",
+    "nuxt-fontawesome": "^0.4.0",
+    "postcss": "^7.0.35",
+    "swiper": "^5.4.5",
+    "tailwindcss": "^2.0.1-compat",
+    "vue-chartjs": "^3.5.1",
+    "vue-echarts": "*"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^3.1.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "@vue/composition-api": "*",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "node-sass": "^4.14.1",
+    "postcss-hexrgba": "^2.0.1",
+    "postcss-nested": "^4.0.2",
+    "postcss-responsive-type": "^1.0.0",
+    "prettier": "^2.0.5",
+    "sass-loader": "^10.0.2"
+  },
+  "browserslist": [
+    "last 1 version",
+    "cover 99.5%"
+  ]
+}

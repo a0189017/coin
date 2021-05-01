@@ -1,0 +1,307 @@
+h1
+  margin-top: 100px
+  text-align: center
+  font-size: 36px
+.coinIndexCotain
+  padding: 0 10px
+  max-width: 880px
+  margin: auto
+  margin-top: 20px
+.coinBlog
+  background: white
+  border-radius: 10px
+  padding: 8px 25px
+  margin-bottom: 10px
+  font-family: 'karla', sans-serif
+  font-size: 16px
+  font-weight: 400
+  box-sizing: border-box
+  min-height: 45px
+  height: fit-content
+  display: flex
+  align-items: center
+  justify-content: center
+  a
+    color: #F87111
+    padding-left: 10px
+.coinMarketContain
+  display: flex
+  font-weight: 600
+  justify-content: space-between
+.coinMarketLeft
+  width: calc(33.33% - 5px)
+  .coinMarketLeftBox
+    margin-bottom: 10px
+    background: white
+    border-radius: 10px
+    box-sizing: border-box
+    padding: 20px 25px
+    h2
+      color: black
+      font-family: 'Karla', sans-serif
+      font-weight: 500
+    span
+      font-size: 33px
+      line-height: 39px
+      margin-top: 4px
+      margin-bottom: 8px
+    &.coinMarketLeftTotal
+      span
+        color: #7f45f0
+    &.coinMarketLeftDominance
+      span
+        color: #46acb7
+    &.coinMarketLeftIndex
+      span
+        color: #d741a7
+        .coinMarketLeftSubIndex
+          font-size: 10px
+          line-height: 14px
+          display: inline-block
+          margin-left: 8px
+.coinMarketRight
+  width: 66%
+  .coinMarketRightChart
+    color: #F87111
+    box-sizing: border-box
+    margin-bottom: 10px
+    padding-right: 20px
+    user-select: none
+    background: white
+    padding: 15px 20px
+    border-radius: 10px
+    position: relative
+    padding-right: 35px
+    position: relative
+    .coinChartsHeader
+      margin-bottom: 5px
+      .coinChartsTitle
+        color: inherit
+        padding-bottom: 3px
+      .coinChartsOption
+        font-size: 13
+        position: relative
+        white-space: nowrap
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        font-family: "karla", sans-serif
+        font-size: 14px
+        user-select: none
+        ul
+          position: relative
+          display: block
+          font-weight: 400
+          padding: 0
+          list-style: none
+          margin-block-start: 1em
+          margin-block-end: 1em
+          margin-inline-start: 0px
+          margin-inline-end: 0px
+          padding-inline-start: 40px
+          li
+            position: relative
+            display: inline-block
+            color: black
+            .option
+              font-size: 13px
+              color: #000
+              cursor: pointer
+              margin: 0 3px
+              &.option_acted
+                color: #F87111
+  .coinMarketRightAdv
+    background: white
+    border-radius: 10px
+    padding: 4px 21px
+    margin-bottom: 15px
+    margin-top: 4px
+    color: #2e1a4e
+    font-family: 'karla', sans-serif
+    font-size: 16px
+    font-weight: 400
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    padding: 9px
+    font-size: 15px
+    span
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      width: 79%
+    a
+      color: #F87111
+.coinCategoryList
+  display: flex
+  text-align: center
+  box-sizing: border-box
+  justify-content: space-between
+  align-items: center
+  flex-wrap: wrap
+  padding: 15px 0
+  .cointCategoryItem
+    display: inline-block
+    background-color: white
+    font-size: 14px
+    padding: 10px 0
+    font-weight: 700
+    border-radius: 10px
+    cursor: pointer
+    flex: 1 1 0
+    text-align: center
+    text-transform: uppercase
+    user-select: none
+    line-height: 17px
+    margin: 5px 3px
+    &.is_acted
+      background-color: #1660A3
+      color: white
+.cointCategorySearch
+  align-items: center
+  background-color: white
+  border-color: #ddd
+  border-radius: 10px
+  border-style: solid
+  border-width: 1px
+  cursor: default
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  min-height: 38px
+  outline: 0!important
+  position: relative
+  transition: all 100ms
+  box-sizing: border-box
+  margin-left: 3px
+  min-width: 300px
+.searchIcon
+  background-color: white
+  color: gray
+  position: absolute
+  top: 0
+  right: 0
+  width: 40px
+  height: 40px
+  font-size: 15px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  border: 0
+  text-align: center
+  cursor: pointer
+input
+  appearance: none
+  width: 100%
+  box-sizing: border-box
+  outline: none
+  border: 0px solid #ddd
+  font-size: 15px
+  color: #4c4948
+  background-color: #fff
+  line-height: 1.4
+  border-radius: 3px
+  cursor: pointer
+  width: 250px
+  height: 40px
+  line-height: 40px
+.searchBox
+  margin-top: 5px
+  width: 100%
+  height: 100px
+  background-color: #fff
+  color: black
+  position: absolute
+  border: 1px solid #ddd
+  border-radius: 3px
+  .searchResult
+    z-index: 10
+    position: relative
+    height: 100px
+    overflow-y: scroll
+    background-color: #fff
+  .searchItem
+    width: 100%
+    padding-bottom: 10px
+    padding-left: 5px
+    cursor: pointer 
+    &:hover
+      background-color: $primary-color
+      color: $white-color
+.coinBottomContain
+  clear: both
+.coinButtomData
+  width: 100%
+  margin: 0 auto
+  margin-top: -30px
+  margin-bottom: 15px
+  color: black
+  border-collapse: collapse
+  font-size: 14px
+  background: white
+  border-radius: 10px
+.coinFAQ
+  margin-bottom: 30px
+  margin-top: 65px
+  font-family: 'Karla', sans-serif
+.chartBox
+  display: block
+  width: 561px
+  height: 230px
+h3
+  font-size: 21px
+  font-weight: 800
+  margin: 0
+  display: block
+  font-size: 1.17em
+  margin-block-start: 1em
+  margin-block-end: 1em
+  margin-inline-start: 0px
+  margin-inline-end: 0px
+  font-weight: bold
+p
+  font-size: 15px
+  margin-bottom: 30px
+  display: block
+  margin-block-start: 1em
+  margin-block-end: 1em
+  margin-inline-start: 0px
+  margin-inline-end: 0px
+@media only screen and (max-width: 960px)
+  .coinMarketContain
+    display: block
+    box-sizing: border-box
+  .coinMarketLeft
+    display: flex
+    justify-content: space-between
+    width: 100% 
+    .coinMarketLeftBox
+      width: 32.4%
+      overflow: hidden
+      padding: 18px 12px
+  .coinMarketRight
+    width: 100% 
+  .coinBlog
+    text-align: center
+    overflow: hidden
+    text-overflow: ellipsis
+  .itemMobileHidden
+    display: none
+  .chartBox
+    width: 90vw
+@media only screen and (max-width: 480px)
+  .coinBlog
+    min-height: 58px
+    flex-direction: column
+    margin-top: 15px
+    font-size: 12px
+    a
+      display: block
+      margin-top: 6px
+  .coinMarketLeft
+    display: block
+    .coinMarketLeftBox
+      width: 100%
+      text-align: center
+  .itemMobileHidden
+    display: none
