@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async (apiUrl, gbDataObj, headers = {}) => {
+export default async (apiUrl='', gbDataObj={}, headers = {}) => {
   let msg = await axios.post(
     process.env.baseApiUrl + apiUrl,
     gbDataObj,

@@ -84,20 +84,20 @@
         <div class='coinButtomData'>
           <ul class='list-wrap'>
             <li class='list-item flex-row'>
-              <div class='item-title'>Rank</div>
+              <div class='item-name'>Rank</div>
               <div class='item-title'>Name</div>
-              <div class='item-title itemMobileHidden'>Chain</div>
-              <div class='item-title itemMobileHidden'>Category</div>
-              <div class='item-title'>Locked (USD)</div>
-              <div class='item-price'>1 Day %</div>
+              <div class='item-title itemMobileHidden'>Volume 7d (USD)</div>
+              <div class='item-priceprice itemMobileHidden'>Last 7d sales</div>
+              <div class='item-title'>Volume all time (USD)</div>
+              <div class='item-price'>All time sales</div>
             </li>
             <a href='/detail' class='list-item flex-row' v-for="(item,key) in rankList">
-              <div class='item-title'>{{ item.Rank }}</div>
+              <div class='item-name'>{{ key+1 }}</div>
               <div class='item-title'>{{ item.Name }}</div>
-              <div class='item-title itemMobileHidden'>{{ item.Chain }}</div>
-              <div class='item-title itemMobileHidden'>{{ item.Category }}</div>
-              <div class='item-title'>{{ item.Locked }}</div>
-              <div class='item-price' :class='item.color'>{{ item.price }}</div>
+              <div class='item-title itemMobileHidden'>{{ item.Volume7d }}</div>
+              <div class='item-price itemMobileHidden'>{{ item.Last7dsales }}</div>
+              <div class='item-title'>{{ item.Volumealltime }}</div>
+              <div class='item-price' :class='item.color'>{{ item.Alltimesales }}</div>
             </a>
           </ul>
         </div>
@@ -114,6 +114,8 @@
 
 <script>
 import Charts from '@/components/Chart'
+import callApi from '@/plugins/callApi'
+import axios from 'axios'
 export default {
   components: {
     Charts
@@ -169,15 +171,8 @@ export default {
         },
       ],
       chartdataloaded:{
-        labels: ['今天', '昨天', '一週前'], // 位於 x 軸的各筆數據 key
-        datasets: [
-          {
-            label: '排名', // x 軸的標籤項目
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            data: ['1', '2', '100'] // 位於 y 軸對應的各筆數據 value
-          }
-        ]
+        labels: [], // 位於 x 軸的各筆數據 key
+        datasets: []
       },
       chartOptions:{
         responsive: true,
@@ -197,7 +192,7 @@ export default {
           yAxes: [
           {
             ticks: {
-              stepSize: 1
+              precision: 0
             }
           }
         ]
@@ -205,8 +200,14 @@ export default {
       }
     }
   },
-	mounted() {
-		
+	async created() {
+		let msg = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/monthbyName?name=CryptoPunks&chain=ethereum');
+    let chartData=[];
+    let serises=msg.data.series;
+    for(var key in serises){
+      chartData.push({label:serises[key]['name'],fill: false,borderColor: 'rgb(75, 192, 192)',data:serises[key]['data']});
+    }
+    this.chartdataloaded = { datasets:chartData, labels: msg.data.xaxis };
 	},
   methods:{
     changeCategory(key){
