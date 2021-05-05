@@ -10,40 +10,18 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
-      links: [
-          {
-            "text":"footer",
-            "url":"#",
-          },
-          {
-            "text":"BTC At Work",
-            "url":"#",
-          },
-          {
-            "text":"Cryptodollars",
-            "url":"#",
-          },
-          {
-            "text":"Lending",
-            "url":"#",
-          },
-          {
-            "text":"Earn Income",
-            "url":"#",
-          },
-          {
-            "text":"The Coin List",
-            "url":"#",
-          },
-          {
-            "text":"Blog",
-            "url":"#",
-          },
-      ],
+      links: [],
     };
+  },
+  async mounted() {
+    let pageAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/page');
+    let pageDatas=pageAPI.data.data[0];
+
+    this.links.push({text:'API',url:pageDatas.API},{text:'Advertise',url:pageDatas.Advertise},{text:'Feedback',url:pageDatas.Feedback},{text:'Blog',url:pageDatas.Blog},{text:'Telegram',url:pageDatas.Telegram},{text:'Twitter',url:pageDatas.Twitter},{text:'Discord',url:pageDatas.Discord});
   },
 };
 </script>

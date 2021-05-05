@@ -1,6 +1,5 @@
 import Vue from 'vue';
-import callApiFun from '@/plugins/callApi';
-
+import axios from 'axios';
 Vue.mixin({
   data() {
     return {
@@ -51,9 +50,6 @@ Vue.mixin({
         path: url,
         query: params,
       });
-    },
-    async callApi(apiUrl, gbDataObj, headers = {}) {
-      return await callApiFun(apiUrl, gbDataObj, headers);
     },
     callFunByName(function_name) {
       this[function_name]();

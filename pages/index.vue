@@ -4,36 +4,36 @@
     <div class='coinIndexCotain'>
       <div class='coinBlog'>
         <div>
-          Founder Fireside Chat with Sunil Srivatsa of Saddle
-          <a href="#"> Read on the DeFi Pulse Blog ▶</a>
+          {{Disclaimerfront}}
+          <a :href="Disclaimerback"> Read more ▶</a>
         </div>
       </div>
       <div class='coinMarketContain'>
         <div class='coinMarketLeft'>
           <div class='coinMarketLeftBox coinMarketLeftTotal'>
-            <h2>Total Value Locked (USD)</h2>
-            <span>$58.78B</span>
+            <h2>{{Title1}}</h2>
+            <span>{{blockAll}}</span>
           </div>
           <div class='coinMarketLeftBox coinMarketLeftDominance'>
-            <h2>Maker Dominance</h2>
-            <span>16.33%</span>
+            <h2>{{Title2}}</h2>
+            <span>{{blockEth}}</span>
           </div>
           <div class='coinMarketLeftBox coinMarketLeftIndex'>
-            <h2>DeFi Pulse Index</h2>
+            <h2>{{Title3}}</h2>
             <span>
-              472.07
-              <div class='coinMarketLeftSubIndex coinIncrease'>
+              {{blockAllTxns}}
+              <!-- <div class='coinMarketLeftSubIndex coinIncrease'>
                 +69.54
                 </br>
                 (+17.28%)
-              </div>
+              </div> -->
             </span>
           </div>
         </div>
         <div class='coinMarketRight'>
           <div class='coinMarketRightChart'>
             <div class='coinChartsHeader'>
-              <p class='coinChartsTitle'>Total Value Locked (USD) in coin</p>
+              <p class='coinChartsTitle'>{{Title4}}</p>
               <div class='coinChartsOption'>
                 <ul class='coinChartsMetrics'>
                   <li v-for="(item,key) in metrics" @click='metricsChange(key)'>
@@ -50,11 +50,14 @@
             <chart :chart-data='chartdataloaded' :options='chartOptions' class='chartBox' />
           </div>
           <div class='coinMarketRightAdv'>
-            <span>Ever consider working in DeFi? Now's your chance to contribute your talents.</span>
-            <a href="#">Apply today</a>
+            <span>{{Disclaimerf2}}</span>
+            <a :href="Disclaimerb2">Subscribe Us</a>
           </div>
         </div>
       </div>
+      <a class='coinAd' :href="ADLink" target='_blank'>
+        <img :src='ADImage'>
+      </a>
       <div class='coinCategoryList'>
         <div 
           class='cointCategoryItem' 
@@ -83,30 +86,44 @@
       <div class='coinBottomContain'>
         <div class='coinButtomData'>
           <ul class='list-wrap'>
-            <li class='list-item flex-row'>
-              <div class='item-name'>Rank</div>
-              <div class='item-title'>Name</div>
-              <div class='item-title itemMobileHidden'>Volume 7d (USD)</div>
-              <div class='item-priceprice itemMobileHidden'>Last 7d sales</div>
-              <div class='item-title'>Volume all time (USD)</div>
-              <div class='item-price'>All time sales</div>
+            <li class='list-item flex-row list-index'>
+              <div class='item-status'>Rank</div>
+              <div class='item-img'>Thumbnail</div>
+              <div class='item-name'>Collection</div>
+              <div class='item-priceprice'>Chain</div>
+              <div class='item-name'>Category</div>
+              <div class='item-price'>Sales</div>
+              <div class='item-price'>24H %</div>
+              <div class='item-price'>7D %</div>
+              <div class='item-price'>Txns (24H)</div>
+              <div class='item-price'>Traders (24H)</div>
             </li>
-            <a href='/detail' class='list-item flex-row' v-for="(item,key) in rankList">
-              <div class='item-name'>{{ key+1 }}</div>
-              <div class='item-title'>{{ item.Name }}</div>
-              <div class='item-title itemMobileHidden'>{{ item.Volume7d }}</div>
-              <div class='item-price itemMobileHidden'>{{ item.Last7dsales }}</div>
-              <div class='item-title'>{{ item.Volumealltime }}</div>
-              <div class='item-price' :class='item.color'>{{ item.Alltimesales }}</div>
+            <a href='/detail' class='list-item flex-row list-index' v-for="(item,key) in rankList">
+              <div class='item-status'>{{ key+1 }}</div>
+              <div class='item-img'><img class='img-cover' :src='item.Thumbnail'></div>
+              <div class='item-name'>{{item.Collection}}</div>
+              <div class='item-priceprice'>{{item.Chain}}</div>
+              <div class='item-name'>{{item.Category}}</div>
+              <div class='item-price'>{{item.Sales}}</div>
+              <div class='item-price'>{{item.H24}}</div>
+              <div class='item-price'>{{item.D7}}</div>
+              <div class='item-price'>{{item.Txns}}</div>
+              <div class='item-price'>{{item.Traders}}</div>
             </a>
           </ul>
         </div>
       </div>
       <div class='coinFAQ'>
-        <h3>What is DeFi?</h3>
-        <p>DeFi is an abbreviation of the phrase decentralized finance which generally refers to digital assets and financial smart contracts, protocols, and decentralized applications (DApps), most of which are built on Ethereum. In simpler terms, it's financial software built on the blockchain that can be pieced together like Money Legos. Read more about DeFi.</p>
-        <h3>What’s the purpose of DeFi Pulse?</h3>
-        <p>DeFi Pulse is a site where you can find the latest analytics and rankings of DeFi protocols. Our rankings track the total value locked into the smart contracts of popular DeFi applications and protocols. Additionally, we curate The DeFi List, a collection of the best resources in DeFi, and DeFi Pulse Farmer, a newsletter covering the latest news and opportunities in DeFi.</p>
+        <h3>{{mtitle1}}</h3>
+        <p>{{mdisc1}}</p>
+        <h3>{{mtitle2}}</h3>
+        <p>{{mdisc2}}</p>
+        <h3>{{mtitle3}}</h3>
+        <p>{{mdisc3}}</p>
+        <h3>{{mtitle4}}</h3>
+        <p>{{mdisc4}}</p>
+        <h3>{{mtitle5}}</h3>
+        <p>{{mdisc5}}</p>
       </div>
     </div>
   </div>
@@ -122,6 +139,29 @@ export default {
   },
   data(){
     return {
+      Title1:'',
+      Title2:'',
+      Title3:'',
+      Title4:'',
+      Disclaimerfront:'',
+      Disclaimerback:'',
+      Disclaimerf2:'',
+      Disclaimerb2:'',
+      mtitle1:'',
+      mdisc1:'',
+      mtitle2:'',
+      mdisc2:'',
+      mtitle3:'',
+      mdisc3:'',
+      mtitle4:'',
+      mdisc4:'',
+      mtitle5:'',
+      mdisc5:'',
+      blockAll:'',
+      blockEth:'',
+      blockAllTxns:'',
+      ADImage:'',
+      ADLink:'',
       searchBoxHidden:'is_hidden',
       metrics:[
         {"Name":'TVL (USD)',"acted":1},
@@ -129,47 +169,19 @@ export default {
         {"Name":'BTC',"acted":0},
       ],
       timescales:[
-        {"Name":'All',"acted":1},
-        {"Name":'1 Year',"acted":0},
-        {"Name":'90 Day',"acted":0},
-        {"Name":'30 Day',"acted":0},
+        {"Name":'24H',"acted":1},
+        {"Name":'7D',"acted":0},
+        {"Name":'30D',"acted":0},
+        {"Name":'All Time',"acted":0},
       ],
       cointCategoryItem:[
-        {"Name":'Lending',"acted":0},
-        {"Name":'DEXes',"acted":0},
-        {"Name":'Derivatives',"acted":0},
-        {"Name":'Payments',"acted":0},
-        {"Name":'Assets',"acted":0},
+        {"Name":'flow',"acted":0},
+        {"Name":'eth',"acted":0},
+        {"Name":'wax',"acted":0},
+        {"Name":'bsc',"acted":0},
+        {"Name":'Polygon',"acted":0},
       ],
-      rankList:[
-        {
-          "Rank":"1",
-          "Name":"Maker",
-          "Chain":"Ethereum",
-          "Category":"Lending",
-          "Locked":"$9.52B",
-          "price":"1%",
-          "color":"coinIncrease"
-        },
-        {
-          "Rank":"2",
-          "Name":"Compound",
-          "Chain":"Ethereum",
-          "Category":"Lending",
-          "Locked":"$9.52B",
-          "price":"-1%",
-          "color":"coinDecrease"
-        },
-        {
-          "Rank":"3",
-          "Name":"Aave",
-          "Chain":"Ethereum",
-          "Category":"Lending",
-          "Locked":"$9.52B",
-          "price":"-100%",
-          "color":"coinDecrease"
-        },
-      ],
+      rankList:[],
       chartdataloaded:{
         labels: [], // 位於 x 軸的各筆數據 key
         datasets: []
@@ -201,21 +213,60 @@ export default {
     }
   },
 	async created() {
-		let msg = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/monthbyName?name=CryptoPunks&chain=ethereum');
-    let chartData=[];
-    let serises=msg.data.series;
-    for(var key in serises){
-      chartData.push({label:serises[key]['name'],fill: false,borderColor: 'rgb(75, 192, 192)',data:serises[key]['data']});
-    }
-    this.chartdataloaded = { datasets:chartData, labels: msg.data.xaxis };
+
+	// let msg = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/monthbyName?name=CryptoPunks&chain=ethereum');
+  //   let chartData=[];
+  //   let serises=msg.data.series;
+  //   for(var key in serises){
+  //     chartData.push({label:serises[key]['name'],fill: false,borderColor: 'rgb(75, 192, 192)',data:serises[key]['data']});
+  //   }
+  //   this.chartdataloaded = { datasets:chartData, labels: msg.data.xaxis };
+  let pageAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/page');
+  let pageDatas=pageAPI.data.data[0];
+  this.Title1=pageDatas.Title1;
+  this.Title2=pageDatas.Title2;
+  this.Title3=pageDatas.Title3;
+  this.Title4=pageDatas.Title4;
+  this.Disclaimerfront=pageDatas.Disclaimerfront;
+  this.Disclaimerback=pageDatas.Disclaimerback;
+  this.Disclaimerf2=pageDatas.Disclaimerf2;
+  this.Disclaimerb2=pageDatas.Disclaimerb2;
+  this.mtitle1=pageDatas.mtitle1;
+  this.mdisc1=pageDatas.mdisc1;
+  this.mtitle2=pageDatas.mtitle2;
+  this.mdisc2=pageDatas.mdisc2;
+  this.mtitle3=pageDatas.mtitle3;
+  this.mdisc3=pageDatas.mdisc3;
+  this.mtitle4=pageDatas.mtitle4;
+  this.mdisc4=pageDatas.mdisc4;
+  this.mtitle5=pageDatas.mtitle5;
+  this.mdisc5=pageDatas.mdisc5;
+  this.ADImage=pageDatas.ADImage;
+  this.ADLink=pageDatas.ADLink;
+  let blockAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/block');
+  let blockDatas=blockAPI.data.data;
+  this.blockAll=blockDatas.all;
+  this.blockEth=blockDatas.eth;
+  this.blockAllTxns=blockDatas.allTxns;
+  let tableAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/table');
+  let tableDatas=tableAPI.data.data;
+  this.rankList=tableDatas;
 	},
   methods:{
     changeCategory(key){
       if(this.cointCategoryItem[key]['acted']==1){
-      this.cointCategoryItem =[{"Name":'Lending',"acted":0},{"Name":'DEXes',"acted":0},{"Name":'Derivatives',"acted":0},{"Name":'Payments',"acted":0},{"Name":'Assets',"acted":0},];
+      this.cointCategoryItem =[{"Name":'flow',"acted":0},
+        {"Name":'eth',"acted":0},
+        {"Name":'wax',"acted":0},
+        {"Name":'bsc',"acted":0},
+        {"Name":'Polygon',"acted":0}];
       }
       else{
-        this.cointCategoryItem =[{"Name":'Lending',"acted":0},{"Name":'DEXes',"acted":0},{"Name":'Derivatives',"acted":0},{"Name":'Payments',"acted":0},{"Name":'Assets',"acted":0},];
+        this.cointCategoryItem =[{"Name":'flow',"acted":0},
+        {"Name":'eth',"acted":0},
+        {"Name":'wax',"acted":0},
+        {"Name":'bsc',"acted":0},
+        {"Name":'Polygon',"acted":0}];
         this.cointCategoryItem[key]['acted']=1;
       }
     },
