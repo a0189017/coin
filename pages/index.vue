@@ -86,9 +86,17 @@
       <div class='coinBottomContain'>
         <div class='coinButtomData'>
           <ul class='list-wrap'>
+            <li class='list-item flex-row'>
+              <div class='item-name'>Collection</div>
+            </li>
+            <a href='/detail' class='list-item flex-row' v-for="(item,key) in rankList">
+              <div class='item-name'>{{item.Collection}}</div>
+            </a>
+          </ul>
+          <ul class='list-wrap list-scroll'>
             <li class='list-item flex-row list-index'>
               <div class='item-status'>Rank</div>
-              <div class='item-img'>Thumbnail</div>
+              <div class='item-img'></div>
               <div class='item-name'>Collection</div>
               <div class='item-priceprice'>Chain</div>
               <div class='item-name'>Category</div>
@@ -162,6 +170,7 @@ export default {
       blockAllTxns:'',
       ADImage:'',
       ADLink:'',
+      timeout:'',
       searchBoxHidden:'is_hidden',
       metrics:[
         {"Name":'TVL (USD)',"acted":1},
@@ -189,6 +198,11 @@ export default {
       chartOptions:{
         responsive: true,
         maintainAspectRatio: false,
+        elements:{
+          point:{
+              radius:0
+          }
+        },
         legend: {
           display: false
         },
@@ -207,51 +221,29 @@ export default {
               precision: 0
             }
           }
-        ]
+          ],
+          xAxes: [
+          {
+            ticks: {
+              type: 'category',
+              maxRotation: 2,
+              autoskip: false ,
+              autoSkipPadding: 100 ,
+              precision: 0
+            }
+          }
+          ]
         }
       }
     }
   },
 	async created() {
-
-	// let msg = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/monthbyName?name=CryptoPunks&chain=ethereum');
-  //   let chartData=[];
-  //   let serises=msg.data.series;
-  //   for(var key in serises){
-  //     chartData.push({label:serises[key]['name'],fill: false,borderColor: 'rgb(75, 192, 192)',data:serises[key]['data']});
-  //   }
-  //   this.chartdataloaded = { datasets:chartData, labels: msg.data.xaxis };
-  let pageAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/page');
-  let pageDatas=pageAPI.data.data[0];
-  this.Title1=pageDatas.Title1;
-  this.Title2=pageDatas.Title2;
-  this.Title3=pageDatas.Title3;
-  this.Title4=pageDatas.Title4;
-  this.Disclaimerfront=pageDatas.Disclaimerfront;
-  this.Disclaimerback=pageDatas.Disclaimerback;
-  this.Disclaimerf2=pageDatas.Disclaimerf2;
-  this.Disclaimerb2=pageDatas.Disclaimerb2;
-  this.mtitle1=pageDatas.mtitle1;
-  this.mdisc1=pageDatas.mdisc1;
-  this.mtitle2=pageDatas.mtitle2;
-  this.mdisc2=pageDatas.mdisc2;
-  this.mtitle3=pageDatas.mtitle3;
-  this.mdisc3=pageDatas.mdisc3;
-  this.mtitle4=pageDatas.mtitle4;
-  this.mdisc4=pageDatas.mdisc4;
-  this.mtitle5=pageDatas.mtitle5;
-  this.mdisc5=pageDatas.mdisc5;
-  this.ADImage=pageDatas.ADImage;
-  this.ADLink=pageDatas.ADLink;
-  let blockAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/block');
-  let blockDatas=blockAPI.data.data;
-  this.blockAll=blockDatas.all;
-  this.blockEth=blockDatas.eth;
-  this.blockAllTxns=blockDatas.allTxns;
-  let tableAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/table');
-  let tableDatas=tableAPI.data.data;
-  this.rankList=tableDatas;
+    this.indexDataFromAPI();
+    this.timeout=setInterval(() => {this.indexDataFromAPI();},300000);
 	},
+  beforeDestroy () {
+    clearInterval(this.timeout)
+  },
   methods:{
     changeCategory(key){
       if(this.cointCategoryItem[key]['acted']==1){
@@ -292,6 +284,43 @@ export default {
     },
     coinSearchShow(){
       this.searchBoxHidden='';
+    },
+    async indexDataFromAPI(){
+      let chartAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/chart');
+      let chartDatas=chartAPI.data.data;
+      let chartData=[];
+      chartData.push({label:'',fill: false,borderColor: 'rgb(75, 192, 192)',data:chartDatas[0]});
+      this.chartdataloaded = { datasets:chartData, labels: chartDatas[1] };
+      let pageAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/page');
+      let pageDatas=pageAPI.data.data[0];
+      this.Title1=pageDatas.Title1;
+      this.Title2=pageDatas.Title2;
+      this.Title3=pageDatas.Title3;
+      this.Title4=pageDatas.Title4;
+      this.Disclaimerfront=pageDatas.Disclaimerfront;
+      this.Disclaimerback=pageDatas.Disclaimerback;
+      this.Disclaimerf2=pageDatas.Disclaimerf2;
+      this.Disclaimerb2=pageDatas.Disclaimerb2;
+      this.mtitle1=pageDatas.mtitle1;
+      this.mdisc1=pageDatas.mdisc1;
+      this.mtitle2=pageDatas.mtitle2;
+      this.mdisc2=pageDatas.mdisc2;
+      this.mtitle3=pageDatas.mtitle3;
+      this.mdisc3=pageDatas.mdisc3;
+      this.mtitle4=pageDatas.mtitle4;
+      this.mdisc4=pageDatas.mdisc4;
+      this.mtitle5=pageDatas.mtitle5;
+      this.mdisc5=pageDatas.mdisc5;
+      this.ADImage=pageDatas.ADImage;
+      this.ADLink=pageDatas.ADLink;
+      let blockAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/block');
+      let blockDatas=blockAPI.data.data;
+      this.blockAll=blockDatas.all;
+      this.blockEth=blockDatas.eth;
+      this.blockAllTxns=blockDatas.allTxns;
+      let tableAPI = await axios.get('http://nft-test.blocktempo.com:3001/api/cap/table');
+      let tableDatas=tableAPI.data.data;
+      this.rankList=tableDatas;
     }
   }
 }
