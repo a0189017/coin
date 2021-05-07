@@ -9,11 +9,12 @@
       <a :href='twitter' class='headerIcon'><fa :icon="['fab', 'twitter']" /></a>
       <a :href='discord' class='headerIcon'><fa :icon="['fab', 'discord']" /></a>
     </div>
+    <img class='logo' src='/Cap.io1.png' />
   </header>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 export default {
   name: 'MainNav',
   data() {
@@ -70,6 +71,10 @@ export default {
     color: black
   .headerIcon
     font-size: 27px
+.logo
+  margin: 45px 0
+  max-width: 90%
+  margin-top: 70px
 @media only screen and (max-width: 960px)
   .mainTop
     position: relative
@@ -82,6 +87,10 @@ export default {
     padding-top: 40px
     width: 100%
     right: auto
+  .logo
+    width: 85%
+    margin-bottom: 10px !important
+    max-width: 300px
 
 
 </style>

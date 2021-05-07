@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Coin's World</h1>
     <div class='coinIndexCotain'>
       <div class='coinBlog'>
         <div>
